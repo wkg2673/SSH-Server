@@ -3,7 +3,7 @@ import socket
 import threading
 
 # Set the login credentials
-USERNAME = "Tobi"
+USERNAME = "user123"
 PASSWORD = "password123"
 
 # Store successful login credentials
