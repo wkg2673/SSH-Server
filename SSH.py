@@ -71,25 +71,25 @@ def start_ssh_server(host="0.0.0.0", port=2222):
                 continue
 
             # Accept the connection
-            chan = transport.accept(20)  # Wait for a channel
+            chan = transport.accept(20)
             if chan is None:
                 print("No channel received. Connection closed.")
                 client.close()
                 continue
 
-            # Send the welcome message
+            # Send welcome message
             chan.send("Welcome to the SSH server!\n")
 
             # Enter an interactive session if the client requested a shell
             while True:
                 try:
-                    # Read incoming data (if any)
+                    # Read data
                     data = chan.recv(1024)
                     if not data:
                         # If no data, break the loop (client has closed the connection)
                         break
 
-                    # Echo the received data back to the client (basic interaction)
+                    # Echo recieved data back
                     chan.send(f"You said: {data.decode()}\n")
                 except Exception as e:
                     print(f"Error while handling channel: {e}")
